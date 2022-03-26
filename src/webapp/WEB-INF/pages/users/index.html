@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of users</title>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Active</th>
+                <th scope="col">Name</th>
+                <th scope="col">City</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td><a th:text="${user.getId()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+                <td><a th:text="${user.isActive()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+                <td><a th:text="${user.getName()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+                <td><a th:text="${user.getCity()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+                <td><a th:text="${user.getPhone()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+                <td><a th:text="${user.getEmail()}" th:href="@{users/{id}(id=${user.getId()})}"></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <form th:action="@{/users/new}">
+        <input type="submit" value="Create new user">
+    </form>
+</body>
+</html>

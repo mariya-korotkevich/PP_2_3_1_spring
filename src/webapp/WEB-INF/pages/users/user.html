@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+    <label for="active">
+        Active:
+        <a th:text="${user.isActive()}" id="active"></a>
+        <p></p>
+    </label>
+
+    <label for="name">
+        Name:
+        <a th:text="${user.getName()}" id="name"></a>
+        <p></p>
+    </label>
+    <label for="city">
+        City:
+        <a th:text="${user.getCity()}" id="city"></a>
+        <p></p>
+    </label>
+    <label for="phone">
+        Phone:
+        <a th:text="${user.getPhone()}" id="phone"></a>
+        <p></p>
+    </label>
+    <label for="email">
+        Email:
+        <a th:text="${user.getEmail()}" id="email"></a>
+        <p></p>
+    </label>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <td>
+                <form th:method="get" th:action="@{/users/{id}/edit(id=${user.getId()})}">
+                    <input type="submit" value="Edit"/>
+                </form>
+            </td>
+            <td>
+                <form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/users}">
+                    <input type="submit" value="List of users"/>
+                </form>
+            </td>
+        </tbody>
+    </table>
+</body>
+</html>
