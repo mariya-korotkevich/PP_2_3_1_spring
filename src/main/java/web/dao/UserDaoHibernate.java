@@ -25,7 +25,7 @@ public class UserDaoHibernate implements UserDao{
     }
 
     @Override
-    public User userByID(long id) {
+    public User getUserById(long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -36,7 +36,7 @@ public class UserDaoHibernate implements UserDao{
 
     @Override
     public void delete(long id) {
-        User user = userByID(id);
+        User user = getUserById(id);
         if (user != null){
             entityManager.remove(user);
         }
